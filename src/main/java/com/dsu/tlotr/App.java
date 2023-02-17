@@ -8,6 +8,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        TLOTR gameTLOTR = new TLOTR(5);
+        gameTLOTR.initArmys();
+        gameTLOTR.initFights();
     }
 }

@@ -14,6 +14,8 @@ public class TLOTR {
 
     public void initArmys(){
         army = new Army[2];
+        army[0] = new Army();
+        army[1] = new Army();
         army[0].createArmy(ARMY_SIZE, ArmyType.HEROES);
         army[1].createArmy(ARMY_SIZE, ArmyType.BEASTS);
         turn = new Turn(army[0], army[1]);
