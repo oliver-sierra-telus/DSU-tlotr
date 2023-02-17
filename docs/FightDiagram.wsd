@@ -1,0 +1,89 @@
+@startuml fight
+
+package tlotr{
+    object tlotr
+
+    object turn
+    object turnGoal
+    object fight
+
+    package util{
+        object limit
+        object dice
+    }
+
+    package armyp{
+        object army
+
+        object armyGoal
+        object howManyDices
+        object createArmy
+        object getNextCharacter
+        object areCharactersAlive
+
+        object ArmyType
+        object Heroes
+        object Beasts
+        object ArmyTypeGoal
+        object numberDices
+
+
+
+
+        package characters{
+            object character
+            object characterGoal
+            object attackCharacter
+            object defendCharacter
+
+            interface fighter
+            interface defend
+            interface attack
+
+            character o-- characterGoal
+            attackCharacter -up-|> characterGoal
+            defendCharacter -up-|> characterGoal
+
+            character *-- fighter
+
+
+            fighter ..|> defend
+            fighter ..|> attack
+        }
+
+
+        army o-- armyGoal
+
+        howManyDices -up-|> armyGoal
+        getNextCharacter -up-|> armyGoal
+        createArmy -up-|> armyGoal
+        areCharactersAlive -up-|> armyGoal
+
+        army *-- ArmyType
+        ArmyType o-right- ArmyTypeGoal 
+        numberDices --|> ArmyTypeGoal
+
+
+        Heroes --|> ArmyType
+        Beasts --|> ArmyType
+
+
+    }
+
+
+    tlotr *-- turn
+    tlotr *-- army
+    army *-- character
+
+    turn -right-> army
+    turn ..> character
+
+    turn o-- turnGoal
+    fight -up-|> turnGoal
+
+
+
+
+}
+
+@enduml
